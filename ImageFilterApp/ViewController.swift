@@ -29,8 +29,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         compareButton.enabled = false
         originalLabel.hidden = true
         
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: Selector("respondToTapGesture:"))
+        self.view.addGestureRecognizer(tapRecognizer)
+        
     }
-
+    
+    // Handle quick tap to temporarily display the original image
+    func respondToTapGesture(sender:UITapGestureRecognizer? = nil){
+        displayFilteredImage()
+    }
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        displayOriginalImage()
+    }
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        displayFilteredImage()
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
