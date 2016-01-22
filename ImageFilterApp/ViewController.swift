@@ -317,21 +317,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func transitionToViews(fadeFrom:UIImageView, fadeTo:UIImageView){
-        fadeTo.hidden = false
         fadeTo.alpha = 0.5
         
-        fadeFrom.alpha = 0.5
-        UIView.animateWithDuration(0.1) { () -> Void in
+        fadeFrom.alpha = 1
+        UIView.animateWithDuration(0.4) { () -> Void in
             fadeTo.alpha = 1
             fadeFrom.alpha = 0
-            fadeFrom.hidden = true
         }
     }
     
     //MARK: Share button pressed
     @IBAction func onShare(sender: AnyObject) {
-        
+        if let image = filteredImage{
+        let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            self.presentViewController(activityViewController, animated: true, completion: nil)
+        }
     }
+    
+    
     
 
 }
