@@ -27,41 +27,61 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NWq-Bh-DAi">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEw-9L-T6q">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEw-9L-T6q">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="0fp-hx-97H"/>
                                         </constraints>
-                                        <state key="normal" title="New Photo"/>
+                                        <state key="normal" image="select_photo">
+                                            <color key="titleColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="onNewPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hAc-Ze-lMn"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ou3-mv-HHm">
-                                        <rect key="frame" x="150" y="0.0" width="150" height="44"/>
-                                        <state key="normal" title="Filter"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ou3-mv-HHm">
+                                        <rect key="frame" x="120" y="0.0" width="120" height="44"/>
+                                        <state key="normal" image="filter">
+                                            <color key="titleColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleShadowColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="onFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="obt-vC-FpJ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G85-Qk-bJ7">
-                                        <rect key="frame" x="300" y="0.0" width="150" height="44"/>
-                                        <state key="normal" title="Compare"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xG6-vm-Def">
+                                        <rect key="frame" x="240" y="0.0" width="120" height="44"/>
+                                        <state key="normal" image="slider">
+                                            <color key="titleColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onEdit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KIB-lI-FA1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G85-Qk-bJ7">
+                                        <rect key="frame" x="360" y="0.0" width="120" height="44"/>
+                                        <state key="normal" image="compare">
+                                            <color key="titleColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="onCompare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zHV-OJ-noT"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k9-VN-Rco">
-                                        <rect key="frame" x="450" y="0.0" width="150" height="44"/>
-                                        <state key="normal" title="Share"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k9-VN-Rco">
+                                        <rect key="frame" x="480" y="0.0" width="120" height="44"/>
+                                        <state key="normal" image="share">
+                                            <color key="titleColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="onShare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQR-oD-0z4"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="original" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvL-ZK-0b0">
-                                <rect key="frame" x="259.5" y="273.5" width="81" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Original" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvL-ZK-0b0">
+                                <rect key="frame" x="257" y="273.5" width="86" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -93,11 +113,15 @@
                     <connections>
                         <outlet property="bottomMenu" destination="NWq-Bh-DAi" id="iKY-tS-36M"/>
                         <outlet property="compareButton" destination="G85-Qk-bJ7" id="ZUx-b6-k0C"/>
+                        <outlet property="editButton" destination="xG6-vm-Def" id="pS8-VF-2Nk"/>
                         <outlet property="filterButton" destination="Ou3-mv-HHm" id="fCP-X5-hWX"/>
                         <outlet property="filterMenu" destination="GoZ-BS-JTe" id="zCf-WE-r7N"/>
                         <outlet property="filteredImageView" destination="u5Q-Nd-46E" id="dUb-XZ-oku"/>
                         <outlet property="originalImageView" destination="e3x-gD-E9f" id="eef-BC-Ewa"/>
                         <outlet property="originalLabel" destination="NvL-ZK-0b0" id="Kii-GU-H9v"/>
+                        <outlet property="selectPhotoView" destination="t3q-Kn-LxD" id="JDP-II-oTA"/>
+                        <outlet property="slider" destination="ESb-RK-SXM" id="ORU-Dg-6wD"/>
+                        <outlet property="sliderView" destination="s39-OI-NQI" id="Svj-eK-lvH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -133,8 +157,70 @@
                         <constraint firstItem="xTH-EB-Ivk" firstAttribute="leading" secondItem="GoZ-BS-JTe" secondAttribute="leading" id="kro-2o-FzC"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" id="t3q-Kn-LxD">
+                    <rect key="frame" x="0.0" y="0.0" width="250" height="125"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BYr-mj-AUf">
+                            <rect key="frame" x="0.0" y="0.0" width="250" height="125"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiL-kO-PGt">
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                    <color key="backgroundColor" red="0.47015395721755115" green="0.82936636985152301" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" image="camera"/>
+                                    <connections>
+                                        <action selector="cameraButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aOX-jN-Kvm"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWW-xp-A8i">
+                                    <rect key="frame" x="125" y="0.0" width="125" height="125"/>
+                                    <color key="backgroundColor" red="0.51666926414991354" green="0.71780921896293437" blue="0.8128681282722513" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" image="album"/>
+                                    <connections>
+                                        <action selector="photoAlbumButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D4T-lO-Z4Q"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="BYr-mj-AUf" firstAttribute="leading" secondItem="t3q-Kn-LxD" secondAttribute="leading" id="EKm-Hd-HbK"/>
+                        <constraint firstAttribute="bottom" secondItem="BYr-mj-AUf" secondAttribute="bottom" id="G6U-Ve-FtM"/>
+                        <constraint firstAttribute="trailing" secondItem="BYr-mj-AUf" secondAttribute="trailing" id="MXi-YZ-F5R"/>
+                        <constraint firstItem="BYr-mj-AUf" firstAttribute="top" secondItem="t3q-Kn-LxD" secondAttribute="top" id="m8R-t7-m3G"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="s39-OI-NQI">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ESb-RK-SXM">
+                            <rect key="frame" x="6" y="8" width="228" height="113"/>
+                            <connections>
+                                <action selector="sliderMoved:" destination="BYZ-38-t0r" eventType="valueChanged" id="pGn-oY-PSj"/>
+                            </connections>
+                        </slider>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="ESb-RK-SXM" firstAttribute="leading" secondItem="s39-OI-NQI" secondAttribute="leadingMargin" id="0PF-2a-HTd"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="ESb-RK-SXM" secondAttribute="trailing" id="9cH-ja-msT"/>
+                        <constraint firstAttribute="bottomMargin" secondItem="ESb-RK-SXM" secondAttribute="bottom" id="Jb5-0C-pHn"/>
+                        <constraint firstItem="ESb-RK-SXM" firstAttribute="top" secondItem="s39-OI-NQI" secondAttribute="topMargin" id="o44-Y0-rmY"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="305" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="album" width="32" height="32"/>
+        <image name="camera" width="32" height="32"/>
+        <image name="compare" width="32" height="32"/>
+        <image name="filter" width="32" height="32"/>
+        <image name="select_photo" width="32" height="32"/>
+        <image name="share" width="32" height="32"/>
+        <image name="slider" width="32" height="32"/>
+    </resources>
 </document>
