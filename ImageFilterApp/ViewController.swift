@@ -266,11 +266,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 slider.value = 50
             }
         } else {
-            sender.selected = true
+            if originalImage != nil{
+                sender.selected = true
 
-            showFilterMenu()
-            filterButton.backgroundColor! = UIColor.whiteColor()
-            slider.value = 50
+                showFilterMenu()
+                filterButton.backgroundColor! = UIColor.whiteColor()
+                slider.value = 50
+            }
         }
     }
     
@@ -487,6 +489,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let image = filteredImage{
         let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
             self.presentViewController(activityViewController, animated: true, completion: nil)
+        } else {
+            
+            if let image = originalImage{
+                let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+                self.presentViewController(activityViewController, animated: true, completion: nil)
+            }
         }
     }
     
