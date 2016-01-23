@@ -29,6 +29,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEw-9L-T6q">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="44"/>
+                                        <color key="backgroundColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="0fp-hx-97H"/>
                                         </constraints>
@@ -41,18 +42,18 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ou3-mv-HHm">
                                         <rect key="frame" x="120" y="0.0" width="120" height="44"/>
+                                        <color key="backgroundColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="filter">
                                             <color key="titleColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
-                                        <state key="selected">
-                                            <color key="titleShadowColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
+                                        <state key="selected" image="filterSelected"/>
                                         <connections>
                                             <action selector="onFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="obt-vC-FpJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xG6-vm-Def">
                                         <rect key="frame" x="240" y="0.0" width="120" height="44"/>
+                                        <color key="backgroundColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="slider">
                                             <color key="titleColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -62,15 +63,18 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G85-Qk-bJ7">
                                         <rect key="frame" x="360" y="0.0" width="120" height="44"/>
+                                        <color key="backgroundColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="compare">
                                             <color key="titleColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <state key="selected" image="compareSelected"/>
                                         <connections>
                                             <action selector="onCompare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zHV-OJ-noT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k9-VN-Rco">
                                         <rect key="frame" x="480" y="0.0" width="120" height="44"/>
+                                        <color key="backgroundColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="share">
                                             <color key="titleColor" red="0.51666926410000003" green="0.71780921900000005" blue="0.81286812829999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -86,64 +90,132 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnT-RY-ncf">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="mlx-eY-Kiu"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.0" green="0.43586383690000002" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem title="Image Filtering" id="dxc-Mn-KPG"/>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NV1-0z-scC">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                                <color key="backgroundColor" red="0.0" green="0.43586383690000002" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="V6l-ez-gCH"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="u5Q-Nd-46E" firstAttribute="bottom" secondItem="NWq-Bh-DAi" secondAttribute="top" id="5iC-ky-ZN6"/>
+                            <constraint firstItem="u5Q-Nd-46E" firstAttribute="bottom" secondItem="PnT-RY-ncf" secondAttribute="bottom" id="6mq-KW-9wN"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NWq-Bh-DAi" secondAttribute="bottom" id="7s0-X8-3oH"/>
+                            <constraint firstItem="u5Q-Nd-46E" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="8IV-Gb-EnT"/>
+                            <constraint firstItem="NWq-Bh-DAi" firstAttribute="top" secondItem="e3x-gD-E9f" secondAttribute="bottom" id="9nd-Os-Tfu"/>
+                            <constraint firstItem="PnT-RY-ncf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="D1y-N7-PNa"/>
+                            <constraint firstItem="e3x-gD-E9f" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="EwM-Ii-MwH"/>
                             <constraint firstItem="e3x-gD-E9f" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="F1n-yB-APO"/>
                             <constraint firstAttribute="trailing" secondItem="NWq-Bh-DAi" secondAttribute="trailing" id="IG8-V8-rAO"/>
+                            <constraint firstItem="e3x-gD-E9f" firstAttribute="bottom" secondItem="PnT-RY-ncf" secondAttribute="bottom" id="IhO-BZ-E6G"/>
+                            <constraint firstItem="NV1-0z-scC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="KWN-rH-NHL"/>
                             <constraint firstAttribute="trailing" secondItem="u5Q-Nd-46E" secondAttribute="trailing" id="N3g-38-XZg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NV1-0z-scC" secondAttribute="trailing" constant="-20" id="Nv8-N2-z9r"/>
                             <constraint firstItem="NWq-Bh-DAi" firstAttribute="top" secondItem="e3x-gD-E9f" secondAttribute="bottom" id="QZJ-rA-M4G"/>
+                            <constraint firstAttribute="trailing" secondItem="PnT-RY-ncf" secondAttribute="trailing" id="RxD-ul-WTA"/>
+                            <constraint firstItem="NWq-Bh-DAi" firstAttribute="top" secondItem="u5Q-Nd-46E" secondAttribute="bottom" id="WON-Ad-xjN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="e3x-gD-E9f" secondAttribute="trailing" constant="-20" id="XFt-0D-qOb"/>
                             <constraint firstItem="NvL-ZK-0b0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="an3-qE-t4s"/>
                             <constraint firstItem="u5Q-Nd-46E" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="crU-ZM-Tlt"/>
+                            <constraint firstItem="e3x-gD-E9f" firstAttribute="top" secondItem="PnT-RY-ncf" secondAttribute="top" id="h9W-5R-zNO"/>
                             <constraint firstItem="NWq-Bh-DAi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hNl-yy-dpp"/>
                             <constraint firstItem="e3x-gD-E9f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="iCa-ys-dco"/>
+                            <constraint firstItem="NV1-0z-scC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="j6Y-vS-dja"/>
                             <constraint firstItem="u5Q-Nd-46E" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lDe-Pv-65y"/>
+                            <constraint firstItem="PnT-RY-ncf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mUk-FM-Vmf"/>
+                            <constraint firstItem="PnT-RY-ncf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="r7M-Om-psm"/>
+                            <constraint firstItem="PnT-RY-ncf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rJA-iI-Qct"/>
+                            <constraint firstItem="e3x-gD-E9f" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rZO-ID-2v5"/>
                             <constraint firstItem="NvL-ZK-0b0" firstAttribute="centerY" secondItem="u5Q-Nd-46E" secondAttribute="centerY" id="smv-l3-4yA"/>
                             <constraint firstItem="NWq-Bh-DAi" firstAttribute="top" secondItem="NvL-ZK-0b0" secondAttribute="bottom" constant="70" id="yyX-iM-1dq"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="rJA-iI-Qct"/>
+                                <exclude reference="F1n-yB-APO"/>
+                                <exclude reference="IhO-BZ-E6G"/>
+                                <exclude reference="h9W-5R-zNO"/>
+                                <exclude reference="rZO-ID-2v5"/>
+                                <exclude reference="6mq-KW-9wN"/>
+                                <exclude reference="lDe-Pv-65y"/>
+                                <exclude reference="QZJ-rA-M4G"/>
                                 <exclude reference="yyX-iM-1dq"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="bottomMenu" destination="NWq-Bh-DAi" id="iKY-tS-36M"/>
+                        <outlet property="brightnessButton" destination="IPc-It-Xni" id="ibr-11-0fq"/>
                         <outlet property="compareButton" destination="G85-Qk-bJ7" id="ZUx-b6-k0C"/>
+                        <outlet property="contrastButton" destination="Ysx-zG-lvP" id="OF9-g5-muo"/>
                         <outlet property="editButton" destination="xG6-vm-Def" id="pS8-VF-2Nk"/>
                         <outlet property="filterButton" destination="Ou3-mv-HHm" id="fCP-X5-hWX"/>
                         <outlet property="filterMenu" destination="GoZ-BS-JTe" id="zCf-WE-r7N"/>
                         <outlet property="filteredImageView" destination="u5Q-Nd-46E" id="dUb-XZ-oku"/>
+                        <outlet property="grayscaleButton" destination="YsB-BM-2lu" id="pCs-Pf-nt6"/>
                         <outlet property="originalImageView" destination="e3x-gD-E9f" id="eef-BC-Ewa"/>
                         <outlet property="originalLabel" destination="NvL-ZK-0b0" id="Kii-GU-H9v"/>
                         <outlet property="selectPhotoView" destination="t3q-Kn-LxD" id="JDP-II-oTA"/>
+                        <outlet property="sepiaButton" destination="EJc-jA-WkR" id="CXl-tk-OJc"/>
                         <outlet property="slider" destination="ESb-RK-SXM" id="ORU-Dg-6wD"/>
                         <outlet property="sliderView" destination="s39-OI-NQI" id="Svj-eK-lvH"/>
+                        <outlet property="transparencyButton" destination="WBO-8h-UGU" id="0Sg-wn-bpW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="GoZ-BS-JTe">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <rect key="frame" x="0.0" y="0.0" width="304" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xTH-EB-Ivk">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <rect key="frame" x="0.0" y="0.0" width="304" height="123"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ysx-zG-lvP">
-                                    <rect key="frame" x="0.0" y="0.0" width="120" height="128"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ysx-zG-lvP">
+                                    <rect key="frame" x="0.0" y="0.0" width="61" height="123"/>
                                     <state key="normal" title="Contrast"/>
                                     <connections>
                                         <action selector="contrastFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X5D-Xm-Ibh"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJc-jA-WkR">
-                                    <rect key="frame" x="120" y="0.0" width="120" height="128"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJc-jA-WkR">
+                                    <rect key="frame" x="61" y="0.0" width="60.5" height="123"/>
                                     <state key="normal" title="Sepia"/>
                                     <connections>
                                         <action selector="sepiaFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vhl-LE-gQR"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YsB-BM-2lu">
+                                    <rect key="frame" x="121.5" y="0.0" width="61" height="123"/>
+                                    <state key="normal" title="Grayscale"/>
+                                    <connections>
+                                        <action selector="grayscaleFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A9P-Aw-232"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBO-8h-UGU">
+                                    <rect key="frame" x="182.5" y="0.0" width="60.5" height="123"/>
+                                    <state key="normal" title="Transparency"/>
+                                    <connections>
+                                        <action selector="transparencyFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G0I-nF-1E8"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPc-It-Xni">
+                                    <rect key="frame" x="243" y="0.0" width="61" height="123"/>
+                                    <state key="normal" title="Brightness"/>
+                                    <connections>
+                                        <action selector="brightnessFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D9e-TK-doM"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -153,7 +225,7 @@
                     <constraints>
                         <constraint firstItem="xTH-EB-Ivk" firstAttribute="top" secondItem="GoZ-BS-JTe" secondAttribute="top" id="3R8-Jg-gQ5"/>
                         <constraint firstAttribute="trailing" secondItem="xTH-EB-Ivk" secondAttribute="trailing" id="HNW-PM-5lH"/>
-                        <constraint firstAttribute="bottom" secondItem="xTH-EB-Ivk" secondAttribute="bottom" id="h1M-ma-mdw"/>
+                        <constraint firstAttribute="bottom" secondItem="xTH-EB-Ivk" secondAttribute="bottom" constant="5" id="h1M-ma-mdw"/>
                         <constraint firstItem="xTH-EB-Ivk" firstAttribute="leading" secondItem="GoZ-BS-JTe" secondAttribute="leading" id="kro-2o-FzC"/>
                     </constraints>
                 </view>
@@ -166,7 +238,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiL-kO-PGt">
                                     <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
-                                    <color key="backgroundColor" red="0.47015395721755115" green="0.82936636985152301" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.31824132132099681" green="0.64364040232807174" blue="0.80516826923076923" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" image="camera"/>
                                     <connections>
                                         <action selector="cameraButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aOX-jN-Kvm"/>
@@ -218,7 +290,9 @@
         <image name="album" width="32" height="32"/>
         <image name="camera" width="32" height="32"/>
         <image name="compare" width="32" height="32"/>
+        <image name="compareSelected" width="32" height="32"/>
         <image name="filter" width="32" height="32"/>
+        <image name="filterSelected" width="32" height="32"/>
         <image name="select_photo" width="32" height="32"/>
         <image name="share" width="32" height="32"/>
         <image name="slider" width="32" height="32"/>

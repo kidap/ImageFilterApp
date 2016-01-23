@@ -12,12 +12,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //MARK: Global variables
     var originalImage: UIImage? = nil
     var filteredImage: UIImage? = nil
+    var filterIconImage: UIImage? = nil
     var selectedFilter : filter? = nil
+    var bottomMenuColor: UIColor = UIColor()
     
     //MARK: Outlets
     @IBOutlet var originalImageView: UIImageView!
     @IBOutlet var filteredImageView: UIImageView!
-    
     @IBOutlet var originalLabel: UILabel!
     
     @IBOutlet var filterButton: UIButton!
@@ -32,6 +33,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet var sliderView: UIView!
     @IBOutlet var slider: UISlider!
 
+    @IBOutlet var contrastButton: UIButton!
+    @IBOutlet var sepiaButton: UIButton!
+    @IBOutlet var grayscaleButton: UIButton!
+    @IBOutlet var transparencyButton: UIButton!
+    @IBOutlet var brightnessButton: UIButton!
+    
     
     //MARK: Standard functions
     override func viewDidLoad() {
@@ -44,6 +51,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         originalLabel.hidden = true
         
+        bottomMenuColor = filterButton.backgroundColor!
+        
         // Handle quick tap to temporarily display the original image
         filteredImageView.userInteractionEnabled = true
         
@@ -55,7 +64,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let touch = touches.first! as? UITouch{
             if touch.view == filteredImageView{
                 displayOriginalImage()
-                self.selectPhotoView.removeFromSuperview()
+                closePhotoViewEnableMenu()
             }
         }
     }
@@ -76,7 +85,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //MARK: New Photo button pressed
     @IBAction func onNewPhoto(sender: AnyObject) {
-        /*
+        
         let actionSheet = UIAlertController(title: "Uploading  Photo", message: "Select a source", preferredStyle: .ActionSheet)
         
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .Default, handler: { action in
@@ -90,22 +99,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         self.presentViewController(actionSheet, animated: true, completion: nil)
 
-        */
+
+        
+        /*
+        
+        originalImageView.alpha = 0.5
+        filteredImageView.alpha = 0.5
+        
+        disableBottomMenus()
         
         view.addSubview(selectPhotoView)
         
+        // Disable Default Auto Layout
         selectPhotoView.translatesAutoresizingMaskIntoConstraints = false
         
+        // Set constraints
         let centerXAnchor = selectPhotoView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor)
         let centerYAnchor = selectPhotoView.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor)
         let heightConstraint = selectPhotoView.heightAnchor.constraintEqualToConstant(125)
         let widthConstraint = selectPhotoView.widthAnchor.constraintEqualToConstant(250)
         
+        // Add constraints to view
         NSLayoutConstraint.activateConstraints([centerXAnchor, centerYAnchor, heightConstraint, widthConstraint])
-        
         view.layoutIfNeeded()
-        originalImageView.alpha = 0.5
-        filteredImageView.alpha = 0.5
+        
+        */
 
     }
     @IBAction func cameraButton(sender: AnyObject) {
@@ -132,15 +150,56 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
     
+    //Disable Bottom menu and filter menu
+    func disableBottomMenus(){
+        self.bottomMenu.userInteractionEnabled = false
+        self.filterMenu.userInteractionEnabled = false
+    }
+    
+    func resetBottomMenu(){
+        //Deselect all buttons
+        filterButton.selected = false
+        compareButton.selected = false
+        editButton.selected = false
+        
+        //Remove filtered images
+        filteredImageView.image = nil
+        filteredImage = nil
+        
+        filterMenu.removeFromSuperview()
+        sliderView.removeFromSuperview()
+        
+        
+        editButton.enabled = false
+        compareButton.enabled = false
+        
+        filterButton.backgroundColor! = bottomMenuColor
+        editButton.backgroundColor! = bottomMenuColor
+        
+    }
+    func closePhotoViewEnableMenu(){
+        self.selectPhotoView.removeFromSuperview()
+        self.bottomMenu.userInteractionEnabled = true
+        self.filterMenu.userInteractionEnabled = true
+    }
+    
     //MARK: Image Picker delegate
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage{
             
+            // Show uploaded image and set it as orginal image
             originalImage = resizeImage(image, newWidth: 600)
             displayOriginalImage()
             
+            // Create a smaller image for filter menu
+            filterIconImage = resizeImage(image, newWidth: 100, square: true)
+            
+            //Hide image picker view
             dismissViewControllerAnimated(true, completion: nil)
-            self.selectPhotoView.removeFromSuperview()
+            
+            
+            closePhotoViewEnableMenu()
+            resetBottomMenu()
             
             //Show original image right away
             originalImageView.alpha = 1
@@ -151,45 +210,66 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
-        selectPhotoView.removeFromSuperview()
+        
+        closePhotoViewEnableMenu()
+        
         originalImageView.alpha = 1
         filteredImageView.alpha = 1
     }
     
-    func resizeImage(image:UIImage, newWidth: CGFloat) ->UIImage{
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
+    func resizeImage(image:UIImage, newWidth: CGFloat, square: Bool = false) ->UIImage{
+        if square{
+            let newHeight = newWidth
+            
+            UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+            image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
         
-        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-        image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    
+            return newImage
+        } else {
+            let scale = newWidth / image.size.width
+            let newHeight = image.size.height * scale
+            
+            UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+            image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            return newImage
+        }
     }
-    
     
     //MARK: onFilter button pressed
     @IBAction func onFilter(sender: UIButton) {
         if sender.selected{
-            hideFilterMenu()
+            if editButton.selected{
+                sender.selected = true
+                editButton.selected = false
+                editButton.backgroundColor = bottomMenuColor
+                compareButton.selected = false
+                
+                showFilterMenu()
+                filterButton.backgroundColor = UIColor.whiteColor()
+            } else{
             sender.selected = false
+        
+                resetBottomMenu()
             
-            compareButton.enabled = false
-            compareButton.selected = false
-            editButton.enabled = false
-            editButton.selected = false
+                //Hide filter menu and slider
+                hideFilterMenu()
+                sliderView.removeFromSuperview()
             
-            
-            filteredImage = nil
-            displayOriginalImage()
+                displayOriginalImage()
+                filterButton.backgroundColor = bottomMenuColor
+                editButton.backgroundColor = bottomMenuColor
+                slider.value = 50
+            }
         } else {
-            showFilterMenu()
             sender.selected = true
-            compareButton.enabled = true
-            editButton.enabled = true
-            
+
+            showFilterMenu()
+            filterButton.backgroundColor! = UIColor.whiteColor()
             slider.value = 50
         }
     }
@@ -212,6 +292,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSLayoutConstraint.activateConstraints([bottomConstraint, rightConstraint, leftConstraint, heightConstraint])
         view.layoutIfNeeded()
 
+
+        setFilterIcon(contrastButton, filterSelected: .contrast)
+        setFilterIcon(sepiaButton, filterSelected: .sepia)
+        setFilterIcon(grayscaleButton, filterSelected: .grayscale)
+        setFilterIcon(brightnessButton, filterSelected: .brightness)
+        setFilterIcon(transparencyButton, filterSelected: .transparency)
+    }
+    func setFilterIcon(button: UIButton, filterSelected : filter){
+        let imageProcessor = ImageProcessor(image: filterIconImage!)
+        button.setImage(imageProcessor.applyFilter(filterType: filterSelected), forState: .Normal)
+        button.imageView?.contentMode = .ScaleAspectFit
+        button.setTitle("", forState: .Normal)
     }
     
     func hideFilterMenu(){
@@ -219,16 +311,61 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
+    
     @IBAction func contrastFilter(sender: AnyObject) {
+        compareButton.selected = false
+        compareButton.enabled = true
+        editButton.enabled = true
+        slider.value = 50
+        
         selectedFilter = .contrast
         applyFilter(selectedFilter!)
     }
     
     
     @IBAction func sepiaFilter(sender: AnyObject) {
+        compareButton.selected = false
+        compareButton.enabled = true
+        editButton.enabled = true
+        slider.value = 50
+        
         selectedFilter = .sepia
         applyFilter(selectedFilter!)
     }
+    
+    @IBAction func grayscaleFilter(sender: AnyObject) {
+        compareButton.selected = false
+        compareButton.enabled = true
+        editButton.enabled = true
+        slider.value = 50
+        
+        selectedFilter = .grayscale
+        applyFilter(selectedFilter!)
+    }
+    
+    @IBAction func transparencyFilter(sender: AnyObject) {
+        compareButton.selected = false
+        compareButton.enabled = true
+        editButton.enabled = true
+        slider.value = 50
+        
+        
+        selectedFilter = .transparency
+        applyFilter(selectedFilter!)
+    }
+    
+    @IBAction func brightnessFilter(sender: AnyObject) {
+        compareButton.enabled = true
+        editButton.enabled = true
+        slider.value = 50
+        
+        
+        selectedFilter = .brightness
+        applyFilter(selectedFilter!)
+    }
+    
+    
+    
     
     func applyFilter(filterSelected : filter){
         if let image = originalImageView.image{
@@ -251,7 +388,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     //MARK: Edit button pressed
-    @IBAction func onEdit(sender: AnyObject) {
+    @IBAction func onEdit(sender: UIButton) {
         if filteredImage != nil{
             //Add slider to main view
             view.addSubview(sliderView)
@@ -268,12 +405,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             //Enable constraints
             NSLayoutConstraint.activateConstraints([bottomConstraint, rightConstraint, leftConstraint, heightConstraint])
             view.layoutIfNeeded()
+            
+            
+            if sender.selected{
+                sender.selected = false
+                sliderView.removeFromSuperview()
+                filterButton.backgroundColor! = UIColor.whiteColor()
+                editButton.backgroundColor! = bottomMenuColor
+            } else{
+                sender.selected = true
+                editButton.backgroundColor! = UIColor.whiteColor()
+                filterButton.backgroundColor! = bottomMenuColor
+            }
         }
     }
     
     @IBAction func sliderMoved(sender: AnyObject) {
         if let filter = selectedFilter{
             applyFilter(filter, intensity: Int(slider.value), animations: false)
+            compareButton.selected = false
         }
     }
     
@@ -300,6 +450,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             //Animations
             if animations {
                 transitionToViews(filteredImageView, fadeTo: originalImageView)
+            } else {
+                filteredImageView.alpha = 0
+                originalImageView.alpha = 1
             }
         }
     }
@@ -312,6 +465,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             //Animations
             if animations {
                 transitionToViews(originalImageView, fadeTo: filteredImageView)
+            } else {
+                originalImageView.alpha = 0
+                filteredImageView.alpha = 1
             }
         }
     }

@@ -123,9 +123,9 @@ public class ImageProcessor {
                 let newBlue : Double = 0.2989 * red + 0.5870 * green + 0.1140 * blue
                 
                 //Apply intensity
-                pixel.red = UInt8(max(0,min(255,(newRed * Double(intensity+50) / 100))))
-                pixel.green = UInt8(max(0,min(255,(newGreen * Double(intensity+50) / 100))))
-                pixel.blue = UInt8(max(0,min(255,(newBlue * Double(intensity+50) / 100))))
+                pixel.red = UInt8(max(0,min(255,(newRed * Double(intensity+20) / 100))))
+                pixel.green = UInt8(max(0,min(255,(newGreen * Double(intensity+20) / 100))))
+                pixel.blue = UInt8(max(0,min(255,(newBlue * Double(intensity+20) / 100))))
                 
                 myRGBA.pixels[index] = pixel
             }
@@ -136,7 +136,7 @@ public class ImageProcessor {
     }
     
     //Brightness
-    func filter2(intensity: Int = 100) -> UIImage{
+    func filter2(intensity: Int = 75) -> UIImage{
         let myRGBA = RGBAImage(image: self.image)!
         
         for y in 0..<myRGBA.height{
@@ -148,9 +148,9 @@ public class ImageProcessor {
                 let blue: Double = Double(pixel.blue)
                 
                 //Apply filter and intensity
-                pixel.red = UInt8(max(0, min(255, (red * ( Double(intensity+50)) / 100))))
-                pixel.green = UInt8(max(0, min(255, (green * (Double(intensity+50)) / 100))))
-                pixel.blue = UInt8(max(0, min(255, (blue * (Double(intensity+50)) / 100))))
+                pixel.red = UInt8(max(0, min(255, (red * ( Double(intensity+30)) / 100))))
+                pixel.green = UInt8(max(0, min(255, (green * (Double(intensity+30)) / 100))))
+                pixel.blue = UInt8(max(0, min(255, (blue * (Double(intensity+30)) / 100))))
                 
                 myRGBA.pixels[index] = pixel
             }
@@ -161,7 +161,7 @@ public class ImageProcessor {
     }
     
     //Contrast
-    func filter3(intensity: Int = 100) -> UIImage{
+    func filter3(intensity: Int = 75) -> UIImage{
         let myRGBA = RGBAImage(image: self.image)!
         let contrast: Double = ( Double(intensity) / 100 ) * 510 - 255
         let factor: Double = ( 259 * ( contrast + 255 ) ) / ( 255 * ( 259 - contrast ) )
@@ -218,7 +218,7 @@ public class ImageProcessor {
     }
     
     //Transparency
-    func filter5(intensity: Int = 75) -> UIImage{
+    func filter5(intensity: Int = 50) -> UIImage{
         let myRGBA = RGBAImage(image: self.image)!
         
         for y in 0..<myRGBA.height{
