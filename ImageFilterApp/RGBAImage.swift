@@ -82,3 +82,12 @@ public struct RGBAImage {
         return image
     }
 }
+
+class CompanyCode{
+
+    var v1 = "None"
+    var v2 = "Reference"
+    var v3 = "Posting Key"
+    var v4 = "Others"
+    var v5 = "Tax code"
+}

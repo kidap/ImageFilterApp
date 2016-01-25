@@ -8,13 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,
+    UICollectionViewDelegate,
+    UICollectionViewDataSource{
     //MARK: Global variables
     var originalImage: UIImage? = nil
     var filteredImage: UIImage? = nil
     var filterIconImage: UIImage? = nil
     var selectedFilter : filter? = nil
     var bottomMenuColor: UIColor = UIColor()
+
+    var filterNameArray = ["Grayscale","Brightness", "Contrast", "Sepia", "Transparency"]
+    var filterEnumArray: [filter] = [.grayscale,.brightness, .contrast, .sepia,.transparency]
+    var filterImageArray = [UIImage()]
     
     //MARK: Outlets
     @IBOutlet var originalImageView: UIImageView!
@@ -27,6 +33,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet var bottomMenu: UIStackView!
     @IBOutlet var filterMenu: UIView!
+    @IBOutlet var filterCollectionView: UIView!
     
     @IBOutlet var selectPhotoView: UIView!
     
@@ -38,6 +45,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet var grayscaleButton: UIButton!
     @IBOutlet var transparencyButton: UIButton!
     @IBOutlet var brightnessButton: UIButton!
+    
+    @IBOutlet var collectionView: UICollectionView!
     
     
     //MARK: Standard functions
@@ -55,6 +64,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Handle quick tap to temporarily display the original image
         filteredImageView.userInteractionEnabled = true
+        
+        
         
     }
     
@@ -279,27 +290,48 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func showFilterMenu(){
         
         //Add filter menu to main view
-        view.addSubview(filterMenu)
+        //view.addSubview(filterMenu)
+        view.addSubview(filterCollectionView)
+        
         
         //Disable default constraints
-        filterMenu.translatesAutoresizingMaskIntoConstraints = false
+        //filterMenu.translatesAutoresizingMaskIntoConstraints = false
+        filterCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
         //Add constraints
+        /*
         let bottomConstraint = filterMenu.bottomAnchor.constraintEqualToAnchor(bottomMenu.topAnchor)
         let rightConstraint = filterMenu.rightAnchor.constraintEqualToAnchor(bottomMenu.rightAnchor)
         let leftConstraint = filterMenu.leftAnchor.constraintEqualToAnchor(bottomMenu.leftAnchor)
         let heightConstraint = filterMenu.heightAnchor.constraintEqualToConstant(44)
+        */
+        let bottomConstraint = filterCollectionView.bottomAnchor.constraintEqualToAnchor(bottomMenu.topAnchor)
+        let rightConstraint = filterCollectionView.rightAnchor.constraintEqualToAnchor(bottomMenu.rightAnchor)
+        let leftConstraint = filterCollectionView.leftAnchor.constraintEqualToAnchor(bottomMenu.leftAnchor)
+        let heightConstraint = filterCollectionView.heightAnchor.constraintEqualToConstant(150)
+        
+
+        filterImageArray.removeAll()
+        
+        for filter in filterEnumArray{
+        
+            let imageProcessor = ImageProcessor(image: filterIconImage!)
+            
+            filterImageArray.append(imageProcessor.applyFilter(filterType: filter))
+        }
+        
         
         //Enable constraints
         NSLayoutConstraint.activateConstraints([bottomConstraint, rightConstraint, leftConstraint, heightConstraint])
         view.layoutIfNeeded()
 
-
+        /*
         setFilterIcon(contrastButton, filterSelected: .contrast)
         setFilterIcon(sepiaButton, filterSelected: .sepia)
         setFilterIcon(grayscaleButton, filterSelected: .grayscale)
         setFilterIcon(brightnessButton, filterSelected: .brightness)
         setFilterIcon(transparencyButton, filterSelected: .transparency)
+        */
     }
     func setFilterIcon(button: UIButton, filterSelected : filter){
         let imageProcessor = ImageProcessor(image: filterIconImage!)
@@ -309,7 +341,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func hideFilterMenu(){
-        self.filterMenu.removeFromSuperview()
+        //self.filterMenu.removeFromSuperview()
+        self.filterCollectionView.removeFromSuperview()
     }
     
     
@@ -418,6 +451,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 sender.selected = true
                 editButton.backgroundColor! = UIColor.whiteColor()
                 filterButton.backgroundColor! = bottomMenuColor
+                filterCollectionView.removeFromSuperview()
             }
         }
     }
@@ -498,8 +532,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    //Mark: UICollectionView Data source
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! FilterCollectionViewCell
+        
+        cell.imageView.image = filterImageArray[indexPath.row]
+        cell.label.text = filterNameArray[indexPath.row]
+        
+        return cell
+    }
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return filterNameArray.count
+    }
     
-    
+    //Mark: UICollectionView Delegate
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        compareButton.selected = false
+        compareButton.enabled = true
+        editButton.enabled = true
+        slider.value = 50
+        
+        selectedFilter = filterEnumArray[indexPath.row]
+        applyFilter(selectedFilter!)
+    }
 
 }
 
