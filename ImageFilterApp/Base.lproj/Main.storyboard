@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -85,9 +85,9 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Original" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvL-ZK-0b0">
-                                <rect key="frame" x="257" y="273.5" width="86" height="30"/>
+                                <rect key="frame" x="257" y="273" width="86" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnT-RY-ncf">
@@ -115,31 +115,31 @@
                             <constraint firstItem="u5Q-Nd-46E" firstAttribute="bottom" secondItem="PnT-RY-ncf" secondAttribute="bottom" id="6mq-KW-9wN"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NWq-Bh-DAi" secondAttribute="bottom" id="7s0-X8-3oH"/>
                             <constraint firstItem="u5Q-Nd-46E" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="8IV-Gb-EnT"/>
-                            <constraint firstItem="NWq-Bh-DAi" firstAttribute="top" secondItem="e3x-gD-E9f" secondAttribute="bottom" id="9nd-Os-Tfu"/>
                             <constraint firstItem="PnT-RY-ncf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="D1y-N7-PNa"/>
-                            <constraint firstItem="e3x-gD-E9f" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="EwM-Ii-MwH"/>
                             <constraint firstItem="e3x-gD-E9f" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="F1n-yB-APO"/>
                             <constraint firstAttribute="trailing" secondItem="NWq-Bh-DAi" secondAttribute="trailing" id="IG8-V8-rAO"/>
                             <constraint firstItem="e3x-gD-E9f" firstAttribute="bottom" secondItem="PnT-RY-ncf" secondAttribute="bottom" id="IhO-BZ-E6G"/>
                             <constraint firstItem="NV1-0z-scC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="KWN-rH-NHL"/>
                             <constraint firstAttribute="trailing" secondItem="u5Q-Nd-46E" secondAttribute="trailing" id="N3g-38-XZg"/>
+                            <constraint firstItem="NWq-Bh-DAi" firstAttribute="top" secondItem="e3x-gD-E9f" secondAttribute="bottom" id="NBM-xG-rUU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NV1-0z-scC" secondAttribute="trailing" constant="-20" id="Nv8-N2-z9r"/>
                             <constraint firstItem="NWq-Bh-DAi" firstAttribute="top" secondItem="e3x-gD-E9f" secondAttribute="bottom" id="QZJ-rA-M4G"/>
                             <constraint firstAttribute="trailing" secondItem="PnT-RY-ncf" secondAttribute="trailing" id="RxD-ul-WTA"/>
+                            <constraint firstItem="e3x-gD-E9f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UUK-Cb-wIe"/>
                             <constraint firstItem="NWq-Bh-DAi" firstAttribute="top" secondItem="u5Q-Nd-46E" secondAttribute="bottom" id="WON-Ad-xjN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="e3x-gD-E9f" secondAttribute="trailing" constant="-20" id="XFt-0D-qOb"/>
                             <constraint firstItem="NvL-ZK-0b0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="an3-qE-t4s"/>
                             <constraint firstItem="u5Q-Nd-46E" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="crU-ZM-Tlt"/>
                             <constraint firstItem="e3x-gD-E9f" firstAttribute="top" secondItem="PnT-RY-ncf" secondAttribute="top" id="h9W-5R-zNO"/>
                             <constraint firstItem="NWq-Bh-DAi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hNl-yy-dpp"/>
-                            <constraint firstItem="e3x-gD-E9f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="iCa-ys-dco"/>
                             <constraint firstItem="NV1-0z-scC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="j6Y-vS-dja"/>
                             <constraint firstItem="u5Q-Nd-46E" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lDe-Pv-65y"/>
                             <constraint firstItem="PnT-RY-ncf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mUk-FM-Vmf"/>
+                            <constraint firstAttribute="trailing" secondItem="e3x-gD-E9f" secondAttribute="trailing" id="pnz-am-zvI"/>
                             <constraint firstItem="PnT-RY-ncf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="r7M-Om-psm"/>
                             <constraint firstItem="PnT-RY-ncf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rJA-iI-Qct"/>
                             <constraint firstItem="e3x-gD-E9f" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rZO-ID-2v5"/>
                             <constraint firstItem="NvL-ZK-0b0" firstAttribute="centerY" secondItem="u5Q-Nd-46E" secondAttribute="centerY" id="smv-l3-4yA"/>
+                            <constraint firstItem="e3x-gD-E9f" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="t56-vW-BMB"/>
                             <constraint firstItem="NWq-Bh-DAi" firstAttribute="top" secondItem="NvL-ZK-0b0" secondAttribute="bottom" constant="70" id="yyX-iM-1dq"/>
                         </constraints>
                         <variation key="default">
@@ -149,6 +149,7 @@
                                 <exclude reference="IhO-BZ-E6G"/>
                                 <exclude reference="h9W-5R-zNO"/>
                                 <exclude reference="rZO-ID-2v5"/>
+                                <exclude reference="5iC-ky-ZN6"/>
                                 <exclude reference="6mq-KW-9wN"/>
                                 <exclude reference="lDe-Pv-65y"/>
                                 <exclude reference="QZJ-rA-M4G"/>
@@ -321,7 +322,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1e-mv-KaC">
                                                                 <rect key="frame" x="0.0" y="88" width="100" height="12"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
